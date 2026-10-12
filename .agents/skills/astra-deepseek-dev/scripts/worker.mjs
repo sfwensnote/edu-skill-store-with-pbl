@@ -61,7 +61,7 @@ async function main(){
   const eventPath=path.join(out,'worker-events.jsonl');
   for(const name of ['worker-events.jsonl','worker-result.md','worker-run.json'])if(fs.existsSync(path.join(out,name)))fail('Output already exists; use a fresh task directory for each run.');
   const eventFd=fs.openSync(eventPath,'wx',0o600);
-  const instruction='You are the DeepSeek implementation Worker for a GPT-6 Astra lead. Follow the assignment and repository AGENTS.md. Work only in assigned paths; preserve existing edits. Implement, test, debug and report evidence for lead acceptance. Do not invoke orchestration skills, delegate, start another coding CLI, change credentials, read credential stores, change model, commit, push or deploy. File scope is an instruction, not an extra sandbox.\n\n';
+  const instruction='You are the DeepSeek implementation Worker for a GPT-6.1 Sol lead. Follow the assignment and repository AGENTS.md. Work only in assigned paths; preserve existing edits. Implement, test, debug and report evidence for lead acceptance. Do not invoke orchestration skills, delegate, start another coding CLI, change credentials, read credential stores, change model, commit, push or deploy. File scope is an instruction, not an extra sandbox.\n\n';
   const args=['exec',...common,'--skip-git-repo-check','--sandbox',v['read-only']?'read-only':'workspace-write','--color','never','--json'];
   if(v.resume)args.push('resume',v.resume);
   args.push('-');

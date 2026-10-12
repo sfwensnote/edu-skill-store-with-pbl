@@ -1,15 +1,15 @@
 ---
 name: astra-deepseek-dev
-description: "用 GPT-6 Astra 规划与验收、已配置的 DeepSeek V4.1 Flash 实现测试，支持 Codex 客户端及仓库云端任务的开发编排。用于明确要求 Astra/DeepSeek 分工的开发任务，不用于教学产品中的 SKILL 方法封装。"
+description: "用 GPT-6.1 Sol 规划与验收、已配置的 DeepSeek V4.1 Flash 实现测试，支持 Codex 客户端及仓库云端任务的开发编排。用于明确要求 GPT-6.1 Sol/DeepSeek 分工的开发任务，不用于教学产品中的 SKILL 方法封装。"
 ---
 
-# Astra + DeepSeek 开发
+# GPT-6.1 Sol + DeepSeek 开发
 
-保留当前会话作为主 Agent。用户指定的主模型是 `gpt-6-astra`，Worker 路由是
+保留当前会话作为主 Agent。用户指定的主模型是 `gpt-6.1-sol`、medium，Worker 路由是
 `custom/deepseek-v4.1-flash`、high，上游模型字段为 `deepseek-v4.1-flash`。
 使用现有中转，不改成官方 `deepseek/` 路由，不添加备用模型。
-Skill 不会切换会话模型；若当前主模型无法确认或不是 Astra，说明这一点，请用户在客户端
-选择 Astra。可先做不依赖模型切换的项目检查，不假报主模型已切换。
+Skill 不会切换会话模型；若当前主模型无法确认或不是 GPT-6.1 Sol / medium，说明这一点，请用户在客户端
+选择 GPT-6.1 Sol，思考级别 medium。可先做不依赖模型切换的项目检查，不假报主模型已切换。
 
 ## 先确定真实执行方式
 
@@ -24,7 +24,7 @@ Skill 不会切换会话模型；若当前主模型无法确认或不是 Astra�
   DeepSeek CLI Worker 执行当前开发任务。先说明采用 **CLI Worker**，按
   [客户端执行](references/desktop.md) 检查并调用 `scripts/worker.mjs`。
   它是独立 Codex CLI 会话，不是客户端原生子 Agent，也不继承客户端 MCP/浏览器工具。
-  主 Agent 留在客户端负责决策和验收；不启动第二个 Astra 来替代它。
+  主 Agent 留在客户端负责决策和验收；不启动第二个 GPT-6.1 Sol 来替代它。
 - Codex 云端任务读 [云端环境](references/cloud.md)。只能使用当前云端实际可用且
   已配置的 Worker；本机回环地址、登录、进程和技能不会自动转移过去。
   缺少精确路由、网络或认证时，继续规划及只读检查，报告阻塞；不自动换模型或

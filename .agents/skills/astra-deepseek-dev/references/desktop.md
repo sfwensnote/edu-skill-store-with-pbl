@@ -1,6 +1,6 @@
 # 客户端内指挥
 
-用户在 Codex 客户端选择 GPT-6 Astra，在项目会话中调用 `$astra-deepseek-dev`。
+用户在 Codex 客户端选择 GPT-6.1 Sol、medium，在项目会话中调用 `$astra-deepseek-dev`。
 当前主会话不必切换到此前 CLI 专用 profile；本技能先看本会话的实际派发工具。
 
 原生 `crack_builder` 可用且 provider 正确时，优先使用原生 Worker。若只提供 OpenAI
