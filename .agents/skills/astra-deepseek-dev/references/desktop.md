@@ -34,6 +34,17 @@ node SKILL_DIR/scripts/worker.mjs check --project PROJECT_ROOT
 任务目录应位于项目内、供任务私有使用；不要放进 `.git`、`.codex` 或 `node_modules`。
 保存操作前 Git 状态以供主 Agent 验收。
 
+## 批次并行执行
+
+Sol 完成整体设计后，为当前批次的每个 Worker 准备独立 brief 和任务输出目录。
+每个目录的 brief 包含 Goal、Context、Scope、Dependencies、Acceptance；不要共用事件日志。
+无冲突的任务通过宿主 shell 工具一次性并发启动多个 helper，默认最多两个，并分别保存
+运行中的 shell session ID。helper 本身只运行一个 Worker，不会自动拆分或调度整个批次。
+独立 worktree 中使用各自的 PROJECT_ROOT；预先说明其未包含哪些现有修改。
+只读任务使用 --read-only。等待所有相关任务完成后再核对输出、集成和启动依赖它们的下一批。
+某个 Worker 需要修正时在原项目/工作树内 resume；其他 Worker 的活动写入范围不得重叠。
+不需要为本次工作流说明更新启动真实 Worker 或消耗模型额度。
+
 执行用户已授权的开发任务：
 
 ```sh
