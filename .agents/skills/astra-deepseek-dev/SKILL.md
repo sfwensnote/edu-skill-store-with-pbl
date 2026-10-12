@@ -17,7 +17,8 @@ Skill 不会切换会话模型；若当前主模型无法确认或不是 Astra�
 检查当前工具 schema 和角色配置，不把磁盘文件当作已加载的派发能力。
 
 - 若当前会话实际提供 `crack_builder` 或明确允许所选 DeepSeek 路由，使用该原生角色，
-  检查它固定的模型、provider 和 high，再按可用 schema 派发。已安装且匹配的
+  检查它固定的模型、provider 和 high，以及该 provider 在当前会话的实际配置层中可用，
+  再按可用 schema 派发。不能用另一个 CLI profile 的检查结果代替当前会话检查。已安装且匹配的
   Codex on Crack 可提供原生编排；不猜测 `subagent`、`spawn_agent` 的参数。
 - 在本机客户端中，若没有原生 DeepSeek 派发能力，用户调用本技能也授权使用已配置的
   DeepSeek CLI Worker 执行当前开发任务。先说明采用 **CLI Worker**，按

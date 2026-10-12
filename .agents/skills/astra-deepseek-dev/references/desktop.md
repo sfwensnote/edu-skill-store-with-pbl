@@ -8,6 +8,11 @@
 不是绕过 Codex on Crack 的原生角色检查；不要同时套用禁止外部 CLI 的原生 Worker 合同。
 浏览器、计算机操作等客户端专属工具由主 Agent 完成，再把必要证据交给 Worker。
 
+当前安装把 `codex-router-crack-worker` 只定义在 `crack-astra-relay` 专用 profile 内，
+没有加入桌面默认全局 provider。因此普通桌面会话应使用 CLI Worker；仅在桌面会话
+确实加载了兼容 profile 且工具允许精确角色时才使用原生派发。技能发现、角色名称可见、
+专用 profile doctor 通过，均不能证明普通桌面会话能原生启动它。
+
 ## 本机 CLI Worker
 
 现有专用配置名 `crack-astra-relay`，Worker provider `codex-router-crack-worker`。
